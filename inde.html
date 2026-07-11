@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Turbo Drift — 3D Mashina O'yini</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Boshlang'ich ekran -->
+  <div id="start-screen">
+    <div class="start-card">
+      <h1>TURBO<span>DRIFT</span></h1>
+      <p class="subtitle">Shaharni kezib, tangalarni yig'ib, vaqtga qarshi yuguring</p>
+
+      <div class="controls-hint">
+        <div class="key-row">
+          <div class="key">W</div><div class="key">A</div><div class="key">S</div><div class="key">D</div>
+          <span>yoki strelkalar — harakat</span>
+        </div>
+        <div class="key-row">
+          <div class="key wide">SPACE</div><span>— tormoz (qo'l tormoz)</span>
+        </div>
+        <div class="key-row">
+          <div class="key wide">SHIFT</div><span>— nitro (turbo tezlik)</span>
+        </div>
+        <div class="key-row">
+          <div class="key wide">C</div><span>— kamera almashtirish</span>
+        </div>
+      </div>
+
+      <button id="start-btn">O'YINNI BOSHLASH</button>
+      <p class="hint-small">Barcha tangalarni (💰) yig'ing va vaqtni kuzating!</p>
+    </div>
+  </div>
+
+  <!-- Telefonni gorizontal tutish haqida ogohlantirish -->
+  <div id="rotate-overlay" class="hidden">
+    <div class="rotate-icon">📱</div>
+    <p>Yaxshiroq o'yin uchun telefoningizni<br>gorizontal (landscape) holatga o'tkazing</p>
+  </div>
+
+  <!-- O'yin ichidagi HUD -->
+  <div id="hud" class="hidden">
+    <div class="hud-top-left">
+      <div class="hud-panel">
+        <div class="hud-label">TEZLIK</div>
+        <div id="speed-value" class="hud-value">0</div>
+        <div class="hud-unit">km/soat</div>
+      </div>
+    </div>
+
+    <div class="hud-top-right">
+      <div class="hud-panel">
+        <div class="hud-label">TANGALAR</div>
+        <div id="coin-value" class="hud-value">0<span id="coin-total">/0</span></div>
+      </div>
+      <div class="hud-panel">
+        <div class="hud-label">VAQT</div>
+        <div id="time-value" class="hud-value">00:00</div>
+      </div>
+    </div>
+
+    <div id="nitro-bar-wrap">
+      <div class="hud-label">NITRO</div>
+      <div id="nitro-bar-bg"><div id="nitro-bar-fill"></div></div>
+    </div>
+
+    <canvas id="minimap" width="160" height="160"></canvas>
+
+    <div id="message-banner" class="hidden"></div>
+
+    <!-- Mobil uchun sensorli boshqaruv -->
+    <div id="touch-controls">
+      <div class="touch-side touch-left">
+        <button id="tb-left" class="touch-btn steer-btn">◀</button>
+        <button id="tb-right" class="touch-btn steer-btn">▶</button>
+      </div>
+      <div class="touch-side touch-right">
+        <button id="tb-cam" class="touch-btn small-btn">⟳</button>
+        <button id="tb-nitro" class="touch-btn nitro-btn">NOS</button>
+        <button id="tb-brake" class="touch-btn brake-btn">STOP</button>
+        <button id="tb-gas" class="touch-btn gas-btn">GAZ</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="loading-screen">
+    <div class="loader"></div>
+    <p>Shahar quryapmiz...</p>
+  </div>
+
+  <canvas id="game-canvas"></canvas>
+
+  <!-- Three.js kutubxonasi (CDN orqali) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
